@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&A Crochet</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: background-color 0.5s ease;
+        }
+        header {
+            background-color: #f1366e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #e5e7eb;
+        }
+        nav {
+            background-color: #df4774;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: #f12573;
+            border-radius: 5px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeIn 0.5s forwards;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        @keyframes ZoomOut {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        h2 {
+            color: #f12573;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #e96c9c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e12563;
+        }
+        footer {
+            background-color: #e96c9c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 5px solid #e5e7eb;
+        }
+        /* Calculator styles */
+        .calculator {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f1f1f1;
+            text-align: center;
+        }
+        .calculator input {
+            width: 60px;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: right;
+        }
+        .calculator button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group input[type="submit"] {
+            background-color: #f1366e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #e12563;
+        }
+        .submitted-comment {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>H&A Crochet</h1>
+        <p>Your go-to destination for all crochet needs!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pattern.html">Patterns</a>
+        <a href="index.html">Back to Home</a>
+    </nav>
+    
+    <div class="container">
+        <h2>Our Latest Crochet Creations</h2>
+        <p>Explore our beautiful crochet creations and find inspiration for your next project.</p>
+        
+        <div class="gallery">
+            <img src="c1.jpg" alt="Crochet Pattern 1" onclick="changeBackgroundColor('#87CEEB')" onload="this.style.opacity=1;">
+            <img src="c2.jfif" alt="Crochet Pattern 2" onclick="changeBackgroundColor('#ffe0b2')" onload="this.style.opacity=1;">
+            <img src="c3.jfif" alt="Crochet Pattern 3" onclick="changeBackgroundColor('#f8bbd0')" onload="this.style.opacity=1;">
+        </div>
+        
+        <!-- Calculator -->
+        <div class="calculator">
+            <h3>Calculator</h3>
+            <input type="text" id="result" disabled>
+            <br>
+            <button onclick="clearResult()">C</button>
+            <button onclick="appendToResult('1')">1</button>
+            <button onclick="appendToResult('2')">2</button>
+            <button onclick="appendToResult('3')">3</button>
+            <button onclick="appendToResult('+')">+</button>
+            <br>
+            <button onclick="appendToResult('4')">4</button>
+            <button onclick="appendToResult('5')">5</button>
+            <button onclick="appendToResult('6')">6</button>
+            <button onclick="appendToResult('-')">-</button>
+            <br>
+            <button onclick="appendToResult('7')">7</button>
+            <button onclick="appendToResult('8')">8</button>
+            <button onclick="appendToResult('9')">9</button>
+            <button onclick="appendToResult('*')">*</button>
+            <br>
+            <button onclick="appendToResult('0')">0</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="appendToResult('/')">/</button>
+        </div>
+    </div>
+
+    <h2>Contact Us</h2>
+        <form action="/submit_form" method="post" id="contactForm">
+            <div class="form-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="">Select your country</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                    <option value="uk">UK</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
+        <!-- Example of displaying a submitted comment for modification -->
+        <div class="submitted-comment" id="commentDisplay" style="display: none;">
+            <h3>Your Submitted Comment:</h3>
+            <p id="displayText"></p>
+            <button onclick="editComment()">Edit</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').onsubmit = function(event) {
+            event.preventDefault();
+            const comment = document.getElementById('comment').value;
+            document.getElementById('displayText').innerText = comment;
+            document.getElementById('commentDisplay').style.display = 'block';
+            document.getElementById('comment').value = ''; // Clear the textarea
+        };
+
+        function editComment() {
+            const comment = document.getElementById('displayText').innerText;
+            document.getElementById('comment').value = comment;
+            document.getElementById('commentDisplay').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
+
+
+    <script>
+        // Function to show more information
+        function showMoreInfo() {
+            alert('Discover more crochet patterns, tutorials, and resources on our website!');
+        }
+
+        // Function to change the background color
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        // Calculator functions
+        function appendToResult(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function calculateResult() {
+            const resultField = document.getElementById('result');
+            try {
+                resultField.value = eval(resultField.value); // Use eval cautiously
+            } catch (e) {
+                resultField.value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
